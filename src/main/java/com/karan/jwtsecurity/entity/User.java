@@ -28,8 +28,6 @@ public class User {
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
-    @NotBlank(message = "Password is required")
-    @Size(min = 3, max = 10, message = "Password must be between 3 to 10 characters")
     @Column(nullable = false)
     private String password;
 
