@@ -17,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username not found"));
@@ -28,8 +29,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         );
     }
+
     private Collection<? extends GrantedAuthority> getAuthority(User user) {
-        GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().name());
+        GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + user.getRole().name());
         return List.of(authority);
     }
 }

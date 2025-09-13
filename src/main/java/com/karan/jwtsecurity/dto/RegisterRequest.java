@@ -1,5 +1,4 @@
 package com.karan.jwtsecurity.dto;
-
 import com.karan.jwtsecurity.entity.Role;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

@@ -2,6 +2,8 @@ package com.karan.jwtsecurity.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,12 +21,16 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @Column(name = "product_info", nullable = false)
     @NotEmpty(message = "name must required for the product")
     private String name;
+
     @Column(name = "product_price", nullable = false)
-    @NotEmpty(message = "price is  required")
+    @NotNull(message = "price is required")
+    @Positive(message = "price must be greater than zero")
     private BigDecimal price;
+
     @Column(name = "product_description", nullable = false)
     @NotEmpty(message = "description is required")
     private String description;
